@@ -1,1 +1,1 @@
-PLACEHOLDER_REPLACE_FROM_/tmp/spinel-push/COU_h_FINAL.json
+$file:/tmp/spinel-push/CONTENT_h_only.txt
