@@ -1,1 +1,1 @@
-$file:/home/ubuntu/git/spinel/src/builtin_ops.h
+PLACEHOLDER_REPLACE_FROM_/tmp/spinel-push/COU_h_FINAL.json
