@@ -1,1 +1,1 @@
-@/tmp/spinel-push/MCP_PUSH_h.json
+$file:/home/ubuntu/git/spinel/src/builtin_ops.h
