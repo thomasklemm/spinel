@@ -1,1 +1,1 @@
-$file:/tmp/spinel-push/CONTENT_h_only.txt
+file:///tmp/spinel-push/CONTENT_h_only.txt
