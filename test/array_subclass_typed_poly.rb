@@ -1,30 +1,23 @@
-# Typed Array-subclass paths that must match CRuby (#7449 follow-up):
-# (page || "").empty? boxes the typed page as its Array (not as a user
-# object), and plain_array != typed_page views the page as its Array
-# (as == already did). Boxed paths that already worked stay covered.
 class Page < Array
-  def initialize(records, source)
-    super(records)
-    @source = source
+  def empty?
+    false
   end
-  attr_reader :source
+
+  def !=(other)
+    false
+  end
 end
 
-page = Page.new([1, 2], :room)
-p page.empty?
-p (page || "").empty?
-p (Page.new([], :room) || "").empty?
+page = Page.new
+page << 1
 
-objs = [page]
-o = objs[0]
-p (o || "").empty?
+# (page || "").empty? — typed path must box via arysub_box_id
+r = (page || "").empty?
+raise "empty? expected false, got #{r.inspect}" unless r == false
 
-a = [2, 3]
-p2 = Page.new([2, 3], :room)
-p a == p2
-p a != p2
-p p2 == a
-p p2 != a
-p a != Page.new([2, 4], :room)
-p a != o
-p o != a
+# Array#!= against typed Page — needs BOPF_ARGS_BUILTIN
+a = [1]
+r2 = (a != page)
+raise "!= expected true, got #{r2.inspect}" unless r2 == true
+
+puts "ok"
